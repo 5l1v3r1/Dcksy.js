@@ -1,5 +1,5 @@
 /*
- *  Dckuino.js, an open source project licenced under MIT License
+ *  Dcksy.js, an open source project licenced under MIT License
  */
 
 /* jshint esversion: 6 */
@@ -16,7 +16,7 @@ var commandMap = { // Key that can be typed
   SPACE:'\' \'',
   TAB:'KEY_TAB',
   PRINTSCREEN:'206',
-  ENTER:'KEY_RETURN',
+  ENTER:'KEY_ENTER',
   RETURN:'KEY_RETURN',
   UPARROW:'KEY_UP_ARROW',
   DOWNARROW:'KEY_DOWN_ARROW',
@@ -81,14 +81,14 @@ var keyMap = { // Normal keys
   z:'z'
 };
 
-class Dckuinojs {
+class Dcksyjs {
   constructor() {
     this.keyMap = keyMap;
     this.commandMap = commandMap;
     this.comboMap = comboMap;
   }
 
-  toArduino(inputCode)
+  toTeensy(inputCode)
   {
     // Check if the parameter is empty or undefined
     if (inputCode === '' || inputCode === undefined)
@@ -104,9 +104,8 @@ class Dckuinojs {
     }  // Returning the total uploadable script
 
     return '/*\n'
-    + ' * Generated with <3 by Dckuino.js, an open source project !\n'
+    + ' * Generated with <3 by Dcksy.js, an open source project !\n'
     + ' */\n\n'
-    + '#include "Keyboard.h"\n\n'
     + 'void typeKey(int key)\n'
     + '{\n'
     + '  Keyboard.press(key);\n'
@@ -116,13 +115,7 @@ class Dckuinojs {
     + '/* Init function */\n'
     + 'void setup()\n'
     + '{\n'
-    + '  // Begining the Keyboard stream\n'
-    + '  Keyboard.begin();\n\n'
-    + '  // Wait 500ms\n'
-    + '  delay(500);\n'
     + '\n' + parsedDucky
-    + '  // Ending stream\n'
-    + '  Keyboard.end();\n'
     + '}\n\n'
     + '/* Unused endless loop */\n'
     + 'void loop() {}';
@@ -193,6 +186,7 @@ class Dckuinojs {
             return;
           }
           break;
+        case "SLEEP":
         case "DELAY":
           wordArray.shift();
 

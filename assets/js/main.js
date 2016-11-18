@@ -24,11 +24,11 @@ jQuery(function() { // Wait for jQuery
   })();
 
   // Create a little duck translator
-  Duck = new Dckuinojs();
+  Duck = new Dcksyjs();
 
   // Compile button
   $(".compile-but").click(function(e) {
-    var duckOutput = Duck.toArduino($(".duckyscript").val());
+    var duckOutput = Duck.toTeensy($(".duckyscript").val());
 
     if (duckOutput !== false)
     {
